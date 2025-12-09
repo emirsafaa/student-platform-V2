@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --font-family:      'Poppins', sans-serif;
+  --color-bg:         #ffffff;
+  --color-text:       #000000;
+  --color-primary:    #1e3a8a;
+  --color-primary-hover: #142e6b;
+  --color-secondary:  #0077b5;
+  --color-light:      #ffffff;
+  --color-muted:      #6b7280;
+  --color-card-bg:    #ffffff;
+  --color-border:     #e5e7eb;
+  --color-input-bg:   #f9fafb;
+  --spacing:          1rem;
+  --radius:           0.375rem;
+  --transition-fast:  0.2s ease-in-out;
+  --navbar-height:    60px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--navbar-height);
+  background-color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing);
+  z-index: 1000;
+}
+.nav-left, .nav-center, .nav-right {
+  display: flex;
+  align-items: center;
+}
+.nav-center { flex: 1; justify-content: center; gap: 2rem; }
+.nav-left, .nav-right { gap: 1rem; }
+.navbar a {
+  color: var(--color-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+.navbar a:hover { color: var(--color-bg); }
+.navbar button {
+  background-color: var(--color-light);
+  border: none;
+  color: var(--color-primary);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+.navbar button:hover { background-color: var(--color-primary-hover); }
+
+.main-content {
+  margin-top: var(--navbar-height);
+  flex: 1;
+  padding: var(--spacing);
+  width: 100%;
+  background-color: var(--color-card-bg);
+}
+
+.card {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--spacing);
+  margin-bottom: var(--spacing);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.course-detail-overlay {
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-card-bg);
+  color: var(--color-text);
+  padding: var(--spacing);
+  overflow-y: auto;
+  z-index: 1000;
+  width: 100vw;
+  height: calc(100vh - var(--navbar-height));
+}
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: var(--spacing);
+}
+.course-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  margin: var(--spacing) 0;
+}
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  margin-top: var(--spacing);
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 1rem;
+  background: var(--color-input-bg);
+  color: var(--color-text);
+}
+
+.admin-form label {
+  margin-top: 1rem;
+  font-weight: bold;
+  display: block;
+}
+
+.admin-form input[type='file'] {
+  border: none;
+  padding: 0;
+}
+
+/* Yeni Eklenen: Sınıf Kartları */
+.grade-panels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing);
+  margin-top: var(--spacing);
+}
+.grade-panel {
+  flex: 1 1 300px;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--spacing);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: box-shadow var(--transition-fast);
+}
+.grade-panel:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.term-panel {
+  margin-top: 1rem;
+}
+.term-panel h4 {
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+}
+.course-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+.course-card:hover {
+  background: var(--color-primary-hover);
+}
+
+.footer {
+  background-color: var(--color-primary);
+  color: var(--color-light);
+  padding: 1rem 0;
+  margin-top: auto;
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  text-align: center;
+}
+.footer a {
+  color: var(--color-light);
+  text-decoration: none;
+}
+.footer a:hover {
+  color: var(--color-secondary);
+}
+.footer .social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing);
+  margin-bottom: 0.5rem;
+}
+.footer .social-buttons a {
+  font-size: 1.2rem;
+  transition: color var(--transition-fast);
+}
+.footer .social-buttons a:hover {
+  color: var(--color-secondary);
+}
+.footer-text {
+  margin-top: 0.25rem;
+  color: var(--color-muted);
+}
+
+@media (max-width: 600px) {
+  .main-content,
+  .course-detail-overlay {
+    padding: 0.5rem;
+    margin: 0;
+    width: 100%;
+  }
+  .navbar {
+    padding: 0 0.5rem;
+  }
+  .footer {
+    flex-direction: column;
+  }
+}
+
+.mobile-logout-btn {
+  background-color: transparent !important;
+  border: none !important;
+  color: var(--color-light) !important;
+  font-size: 1.1rem;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+}
+
+.mobile-logout-btn:hover {
+  color: var(--color-secondary) !important;
+}
+
+/* 👤 Kullanıcısı ve Admin Etiketi için Stil */
+.user-info {
+  color: var(--color-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.user-info .emoji {
+  color: var(--color-light);
+}
+
+.admin-label {
+  color: var(--color-light) !important;
+  margin-left: 0.5rem;
+  font-weight: 500;
+}

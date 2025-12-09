@@ -1,0 +1,32 @@
+{
+  "name": "student-platform",
+  "version": "1.0.0",
+  "description": "Helpful website for computer engineering students",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "cd frontend && npm run dev",
+    "backend": "cd backend && npm run dev",
+    "dev": "echo \"Please run npm run frontend or npm run backend separately\"",
+    "lint": "eslint \"**/*.{js,vue}\" --quiet",
+    "format": "prettier --write \"**/*.{js,vue,json,md}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emirsafa34/student-platform.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emirsafa34/student-platform/issues"
+  },
+  "homepage": "https://github.com/Emirsafa34/student-platform#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^9.25.1",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.5.3"
+  }
+}
