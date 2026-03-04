@@ -3,9 +3,9 @@
     <div class="dashboard-wrapper">
       <!-- Sol tarafta sabit yan menü -->
       <aside class="sidebar">
-        <router-link to="/announcements" class="sidebar-link"
-          >📰 Duyurular</router-link
-        >
+        <router-link to="/announcements" class="sidebar-link">
+          📰 Duyurular
+        </router-link>
         <router-link to="/courses" class="sidebar-link">📚 Dersler</router-link>
         <router-link to="/qas" class="sidebar-link">❓ Soru-Cevap</router-link>
       </aside>
@@ -13,10 +13,10 @@
       <!-- Sağ ana içerik -->
       <main class="dashboard-content">
         <!-- 1) En üstte Son Duyurular -->
-      <section class="section announcements-section">
-        <h3>📰 Son Duyurular</h3>
-        <div v-if="isLoading" class="loading">Yükleniyor...</div>
-        <ul v-else-if="latestAnnouncements.length" class="list">
+        <section class="section announcements-section">
+          <h3>📰 Son Duyurular</h3>
+          <div v-if="isLoading" class="loading">Yükleniyor...</div>
+          <ul v-else-if="latestAnnouncements.length" class="list">
             <li
               v-for="ann in latestAnnouncements"
               :key="ann._id"
@@ -128,7 +128,7 @@ const goToQAs = () => router.push('/qas');
 
 // İçerikten kısa önizleme
 const snippet = (md) => {
-  const text = md.replace(/[#_*>\-\[\]\(\)`]/g, '').trim();
+  const text = md.replace(/[#_*>\-[\]()]/g, '').trim();
   return text.length > 80 ? text.slice(0, 80) + '…' : text;
 };
 const formatDate = (str) =>

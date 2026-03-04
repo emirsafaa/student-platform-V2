@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles",
+    "lint": "eslint \"**/*.{js,vue}\" --quiet"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -23,6 +24,10 @@
     "multer": "^1.4.5-lts.2"
   },
   "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-vue": "^9.32.0",
     "jest": "^29.7.0",
     "nodemon": "^3.1.0",
     "supertest": "^7.1.0"
