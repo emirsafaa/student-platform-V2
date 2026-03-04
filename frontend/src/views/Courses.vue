@@ -6,6 +6,7 @@
       @input="filterCourses"
       type="text"
       placeholder="Ders ara..."
+      aria-label="Ders ara"
       class="course-search"
     />
 
@@ -15,21 +16,33 @@
         {{ editingId ? 'Düzenleme Modu' : 'Yeni Ders Ekle' }}
       </button>
       <div v-if="showForm" class="form">
-        <input v-model="form.title" placeholder="Ders Başlığı" required />
+        <input
+          v-model="form.title"
+          placeholder="Ders Başlığı"
+          aria-label="Ders Başlığı"
+          required
+        />
         <textarea
           v-model="form.description"
           placeholder="Açıklama (Markdown destekli)"
+          aria-label="Ders Açıklaması"
           rows="4"
           required
         ></textarea>
-        <input type="number" v-model="form.year" placeholder="Yıl (örneğin 2025)" required />
-        <select v-model="form.grade" required>
+        <input
+          type="number"
+          v-model="form.year"
+          placeholder="Yıl (örneğin 2025)"
+          aria-label="Ders Yılı"
+          required
+        />
+        <select v-model="form.grade" aria-label="Sınıf Seçin" required>
           <option disabled value="">— Sınıf Seçin —</option>
           <option v-for="g in grades" :key="g" :value="g">
             {{ g }}. Sınıf
           </option>
         </select>
-        <select v-model="form.term" required>
+        <select v-model="form.term" aria-label="Dönem Seçin" required>
           <option disabled value="">— Dönem Seçin —</option>
           <option value="güz">Güz</option>
           <option value="bahar">Bahar</option>
@@ -38,21 +51,37 @@
         <!-- Dosya yüklemeleri -->
         <div>
           <label>Görseller (max 3):</label>
-          <input type="file" accept="image/*" multiple @change="handleImageUpload" />
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            @change="handleImageUpload"
+          />
         </div>
         <div>
           <label>PDF'ler (max 10):</label>
-          <input type="file" accept="application/pdf" multiple @change="handlePDFUpload" />
+          <input
+            type="file"
+            accept="application/pdf"
+            multiple
+            @change="handlePDFUpload"
+          />
         </div>
 
         <!-- YouTube Alanları -->
-        <input v-model="form.youtubeEmbed" placeholder="YouTube Embed Linki" />
-        <input v-model="form.youtubePlaylist" placeholder="YouTube Playlist Linki" />
+        <input
+          v-model="form.youtubeEmbed"
+          placeholder="YouTube Embed Linki"
+          aria-label="YouTube Embed Linki"
+        />
+        <input
+          v-model="form.youtubePlaylist"
+          placeholder="YouTube Playlist Linki"
+          aria-label="YouTube Playlist Linki"
+        />
 
         <div class="form-buttons">
-          <button class="btn-add-course" @click="saveCourse">
-            Kaydet
-          </button>
+          <button class="btn-add-course" @click="saveCourse">Kaydet</button>
           <button class="btn-cancel" @click="cancelForm">İptal</button>
         </div>
       </div>
@@ -60,14 +89,28 @@
 
     <!-- Ders Detay (Overlay) -->
     <div v-if="selectedCourse" class="course-detail-overlay">
-      <button class="back-btn" @click="selectedCourse = null">‹ Geri</button>
+      <button
+        class="back-btn"
+        @click="selectedCourse = null"
+        aria-label="Geri dön"
+      >
+        ‹ Geri
+      </button>
       <h3>{{ selectedCourse.title }}</h3>
-      <div class="course-description" v-html="renderMarkdown(selectedCourse.description)"></div>
+      <div
+        class="course-description"
+        v-html="renderMarkdown(selectedCourse.description)"
+      ></div>
 
       <div v-if="selectedCourse.images?.length">
         <h4>Görseller</h4>
         <div class="image-gallery">
-          <img v-for="img in selectedCourse.images" :key="img" :src="baseURL + img" class="course-image" />
+          <img
+            v-for="img in selectedCourse.images"
+            :key="img"
+            :src="baseURL + img"
+            class="course-image"
+          />
         </div>
       </div>
 
@@ -75,7 +118,9 @@
         <h4>PDF Dokümanlar</h4>
         <ul>
           <li v-for="pdf in selectedCourse.pdfs" :key="pdf">
-            <a :href="baseURL + pdf" target="_blank" rel="noopener">{{ fileName(pdf) }}</a>
+            <a :href="baseURL + pdf" target="_blank" rel="noopener">{{
+              fileName(pdf)
+            }}</a>
           </li>
         </ul>
       </div>
@@ -83,13 +128,19 @@
       <div v-if="selectedCourse.youtubeEmbed">
         <h4>Video</h4>
         <div class="video-wrapper">
-          <iframe :src="embedUrl(selectedCourse.youtubeEmbed)" frameborder="0" allowfullscreen></iframe>
+          <iframe
+            :src="embedUrl(selectedCourse.youtubeEmbed)"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
 
       <div v-if="selectedCourse.youtubePlaylist">
         <h4>YouTube Oynatma Listesi</h4>
-        <a :href="selectedCourse.youtubePlaylist" target="_blank" rel="noopener">Listeyi Aç</a>
+        <a :href="selectedCourse.youtubePlaylist" target="_blank" rel="noopener"
+          >Listeyi Aç</a
+        >
       </div>
 
       <!-- ✅ Admin Düzenle/Sil Butonları -->
@@ -107,11 +158,27 @@
         <div class="term-panel">
           <h4>Güz Dönemi</h4>
           <div v-if="filteredCoursesByGradeAndTerm(grade, 'güz').length">
-            <div v-for="c in filteredCoursesByGradeAndTerm(grade, 'güz')" :key="c._id" class="course-card">
+            <div
+              v-for="c in filteredCoursesByGradeAndTerm(grade, 'güz')"
+              :key="c._id"
+              class="course-card"
+            >
               <button @click="selectCourse(c)">{{ c.title }}</button>
               <span v-if="isAdmin" class="list-actions">
-                <button @click.stop="enterEditMode(c)">✎</button>
-                <button @click.stop="deleteCourse(c._id)">🗑</button>
+                <button
+                  @click.stop="enterEditMode(c)"
+                  aria-label="Dersi düzenle"
+                  title="Düzenle"
+                >
+                  ✎
+                </button>
+                <button
+                  @click.stop="deleteCourse(c._id)"
+                  aria-label="Dersi sil"
+                  title="Sil"
+                >
+                  🗑
+                </button>
               </span>
             </div>
           </div>
@@ -121,11 +188,27 @@
         <div class="term-panel">
           <h4>Bahar Dönemi</h4>
           <div v-if="filteredCoursesByGradeAndTerm(grade, 'bahar').length">
-            <div v-for="c in filteredCoursesByGradeAndTerm(grade, 'bahar')" :key="c._id" class="course-card">
+            <div
+              v-for="c in filteredCoursesByGradeAndTerm(grade, 'bahar')"
+              :key="c._id"
+              class="course-card"
+            >
               <button @click="selectCourse(c)">{{ c.title }}</button>
               <span v-if="isAdmin" class="list-actions">
-                <button @click.stop="enterEditMode(c)">✎</button>
-                <button @click.stop="deleteCourse(c._id)">🗑</button>
+                <button
+                  @click.stop="enterEditMode(c)"
+                  aria-label="Dersi düzenle"
+                  title="Düzenle"
+                >
+                  ✎
+                </button>
+                <button
+                  @click.stop="deleteCourse(c._id)"
+                  aria-label="Dersi sil"
+                  title="Sil"
+                >
+                  🗑
+                </button>
               </span>
             </div>
           </div>
@@ -188,7 +271,7 @@ onMounted(load);
 
 function filterCourses() {
   const query = searchQuery.value.toLowerCase();
-  filteredCourses.value = courses.value.filter(course =>
+  filteredCourses.value = courses.value.filter((course) =>
     course.title.toLowerCase().includes(query)
   );
 }
