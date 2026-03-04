@@ -198,8 +198,17 @@ const filteredCoursesByGradeAndTerm = (g, t) =>
 
 const fileName = (url) => url.split('/').pop();
 const embedUrl = (url) => {
+  if (!url) return '';
+  // Try to match youtube id
   const m = url.match(/(?:v=|\.be\/|embed\/)([^&?]+)/);
-  return m ? `https://www.youtube.com/embed/${m[1]}` : url;
+  if (m) {
+    return `https://www.youtube.com/embed/${m[1]}`;
+  }
+  // If not a youtube url, only allow http/https to avoid javascript: execution
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    return url;
+  }
+  return '';
 };
 const renderMarkdown = (text) => DOMPurify.sanitize(marked.parse(text || ''));
 

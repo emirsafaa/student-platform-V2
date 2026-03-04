@@ -50,6 +50,7 @@ router.put(
   '/:id',
   protect,
   adminOnly,
+  courseUpload, // 🆕 PDF ve görsel dosya desteği
   [
     body('title')
       .optional()

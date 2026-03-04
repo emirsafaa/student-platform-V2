@@ -70,6 +70,7 @@ app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/courses', require('./routes/courseRoutes'));
 app.use('/api/qas', require('./routes/qaRoutes'));
 app.use('/api/announcements', require('./routes/announcementRoutes'));
+app.use('/api/files', require('./routes/uploadRoutes'));
 
 // Sağlık kontrolü ve varsayılan yanıt
 app.get('/healthz', (req, res) => res.status(200).json({ status: 'ok' }));

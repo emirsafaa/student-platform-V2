@@ -23,7 +23,7 @@ exports.getAllQA = asyncHandler(async (req, res) => {
 exports.addAnswer = asyncHandler(async (req, res) => {
   const { text } = req.body;
   const qa = await QA.findById(req.params.id);
-  if (!qa) {
+  if (!qa || qa.isDeleted) {
     res.status(404);
     throw new Error('Soru bulunamadı');
   }
@@ -35,7 +35,7 @@ exports.addAnswer = asyncHandler(async (req, res) => {
 // Update question
 exports.updateQA = asyncHandler(async (req, res) => {
   const qa = await QA.findById(req.params.id);
-  if (!qa) {
+  if (!qa || qa.isDeleted) {
     res.status(404);
     throw new Error('Soru bulunamadı');
   }
@@ -54,7 +54,7 @@ exports.updateQA = asyncHandler(async (req, res) => {
 // Delete answer (admin only)
 exports.deleteAnswer = asyncHandler(async (req, res) => {
   const qa = await QA.findById(req.params.qId);
-  if (!qa) {
+  if (!qa || qa.isDeleted) {
     res.status(404);
     throw new Error('Soru bulunamadı');
   }
@@ -68,7 +68,7 @@ exports.deleteAnswer = asyncHandler(async (req, res) => {
 // Soft delete question
 exports.deleteQA = asyncHandler(async (req, res) => {
   const qa = await QA.findById(req.params.id);
-  if (!qa) {
+  if (!qa || qa.isDeleted) {
     res.status(404);
     throw new Error('Soru bulunamadı');
   }
