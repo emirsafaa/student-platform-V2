@@ -6,6 +6,7 @@
       @input="filterCourses"
       type="text"
       placeholder="Ders ara..."
+      aria-label="Ders ara"
       class="course-search"
     />
 
@@ -15,21 +16,22 @@
         {{ editingId ? 'Düzenleme Modu' : 'Yeni Ders Ekle' }}
       </button>
       <div v-if="showForm" class="form">
-        <input v-model="form.title" placeholder="Ders Başlığı" required />
+        <input v-model="form.title" placeholder="Ders Başlığı" aria-label="Ders Başlığı" required />
         <textarea
           v-model="form.description"
           placeholder="Açıklama (Markdown destekli)"
+          aria-label="Ders Açıklaması"
           rows="4"
           required
         ></textarea>
-        <input type="number" v-model="form.year" placeholder="Yıl (örneğin 2025)" required />
-        <select v-model="form.grade" required>
+        <input type="number" v-model="form.year" placeholder="Yıl (örneğin 2025)" aria-label="Ders Yılı" required />
+        <select v-model="form.grade" aria-label="Sınıf Seçin" required>
           <option disabled value="">— Sınıf Seçin —</option>
           <option v-for="g in grades" :key="g" :value="g">
             {{ g }}. Sınıf
           </option>
         </select>
-        <select v-model="form.term" required>
+        <select v-model="form.term" aria-label="Dönem Seçin" required>
           <option disabled value="">— Dönem Seçin —</option>
           <option value="güz">Güz</option>
           <option value="bahar">Bahar</option>
@@ -46,8 +48,8 @@
         </div>
 
         <!-- YouTube Alanları -->
-        <input v-model="form.youtubeEmbed" placeholder="YouTube Embed Linki" />
-        <input v-model="form.youtubePlaylist" placeholder="YouTube Playlist Linki" />
+        <input v-model="form.youtubeEmbed" placeholder="YouTube Embed Linki" aria-label="YouTube Embed Linki" />
+        <input v-model="form.youtubePlaylist" placeholder="YouTube Playlist Linki" aria-label="YouTube Playlist Linki" />
 
         <div class="form-buttons">
           <button class="btn-add-course" @click="saveCourse">
@@ -60,7 +62,7 @@
 
     <!-- Ders Detay (Overlay) -->
     <div v-if="selectedCourse" class="course-detail-overlay">
-      <button class="back-btn" @click="selectedCourse = null">‹ Geri</button>
+      <button class="back-btn" @click="selectedCourse = null" aria-label="Geri dön">‹ Geri</button>
       <h3>{{ selectedCourse.title }}</h3>
       <div class="course-description" v-html="renderMarkdown(selectedCourse.description)"></div>
 
@@ -110,8 +112,8 @@
             <div v-for="c in filteredCoursesByGradeAndTerm(grade, 'güz')" :key="c._id" class="course-card">
               <button @click="selectCourse(c)">{{ c.title }}</button>
               <span v-if="isAdmin" class="list-actions">
-                <button @click.stop="enterEditMode(c)">✎</button>
-                <button @click.stop="deleteCourse(c._id)">🗑</button>
+                <button @click.stop="enterEditMode(c)" aria-label="Dersi düzenle" title="Düzenle">✎</button>
+                <button @click.stop="deleteCourse(c._id)" aria-label="Dersi sil" title="Sil">🗑</button>
               </span>
             </div>
           </div>
@@ -124,8 +126,8 @@
             <div v-for="c in filteredCoursesByGradeAndTerm(grade, 'bahar')" :key="c._id" class="course-card">
               <button @click="selectCourse(c)">{{ c.title }}</button>
               <span v-if="isAdmin" class="list-actions">
-                <button @click.stop="enterEditMode(c)">✎</button>
-                <button @click.stop="deleteCourse(c._id)">🗑</button>
+                <button @click.stop="enterEditMode(c)" aria-label="Dersi düzenle" title="Düzenle">✎</button>
+                <button @click.stop="deleteCourse(c._id)" aria-label="Dersi sil" title="Sil">🗑</button>
               </span>
             </div>
           </div>
