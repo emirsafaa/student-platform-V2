@@ -67,6 +67,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { marked } from 'marked'; // Markdown için
+import DOMPurify from 'dompurify'; // XSS Koruması için
 import {
   fetchAnnouncements,
   createAnnouncement,
@@ -115,7 +116,7 @@ const goNext = () => {
 };
 
 // Markdown işleyici
-const renderMarkdown = (text) => marked.parse(text || '');
+const renderMarkdown = (text) => DOMPurify.sanitize(marked.parse(text || ''));
 // Tarih formatlama
 const formatDate = (s) =>
   new Date(s).toLocaleDateString('tr-TR', {
