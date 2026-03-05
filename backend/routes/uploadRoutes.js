@@ -8,6 +8,7 @@ router.post('/upload', uploadFile);
 
 module.exports = router;
 
+/*
 // server.js (güncelleme)
 const uploadRoutes = require('./routes/uploadRoutes');
 app.use('/api/files', uploadRoutes);
@@ -15,7 +16,6 @@ app.use('/api/files', uploadRoutes);
 // uploads/ dizinini servis et
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-/*
 --- S3 ENTEGRASYONU (Opsiyonel) ---
 const AWS = require('aws-sdk');
 const multerS3 = require('multer-s3');

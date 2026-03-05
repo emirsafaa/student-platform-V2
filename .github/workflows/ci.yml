@@ -35,8 +35,10 @@ jobs:
         working-directory: backend
         run: npm ci
 
+      - name: Install Root Dependencies
+        run: npm install
+
       - name: Run ESLint (backend)
-        working-directory: backend
         run: npm run lint
 
       - name: Run Backend Tests
@@ -72,8 +74,10 @@ jobs:
         working-directory: frontend
         run: npm ci
 
+      - name: Install Root Dependencies
+        run: npm install
+
       - name: Run ESLint (frontend)
-        working-directory: frontend
         run: npm run lint
 
       - name: Run Frontend Build
