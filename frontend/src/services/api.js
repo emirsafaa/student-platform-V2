@@ -20,7 +20,7 @@ const baseURL = host || 'http://localhost:5000';
 const api = axios.create({
   baseURL: `${baseURL}/api`,
   timeout: 10000,
-  withCredentials: true,  // gerekliyse çerez gönderimi için
+  withCredentials: true, // gerekliyse çerez gönderimi için
 });
 
 // Request interceptor: her isteğe Authorization header’ı ekle
