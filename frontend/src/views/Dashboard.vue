@@ -128,7 +128,7 @@ const goToQAs = () => router.push('/qas');
 
 // İçerikten kısa önizleme
 const snippet = (md) => {
-  const text = md.replace(/[#_*>\-\[\]\(\)`]/g, '').trim();
+  const text = md.replace(/[#_*>\-[\]()`]/g, '').trim();
   return text.length > 80 ? text.slice(0, 80) + '…' : text;
 };
 const formatDate = (str) =>
