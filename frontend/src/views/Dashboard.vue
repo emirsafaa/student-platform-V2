@@ -13,10 +13,10 @@
       <!-- Sağ ana içerik -->
       <main class="dashboard-content">
         <!-- 1) En üstte Son Duyurular -->
-        <section class="section announcements-section">
-          <h3>📰 Son Duyurular</h3>
-          <div v-if="isLoading" class="loading">Yükleniyor...</div>
-          <ul v-else-if="latestAnnouncements.length" class="list">
+      <section class="section announcements-section">
+        <h3>📰 Son Duyurular</h3>
+        <div v-if="isLoading" class="loading">Yükleniyor...</div>
+        <ul v-else-if="latestAnnouncements.length" class="list">
             <li
               v-for="ann in latestAnnouncements"
               :key="ann._id"

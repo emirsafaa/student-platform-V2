@@ -1,5 +1,6 @@
 Student Platform
 
+
 Description
 A web application for computer engineering students to view and manage courses and Q&A, featuring role-based access (admin and user), built with Vue.js for the frontend and Node.js/Express with MongoDB for the backend.
 
@@ -71,18 +72,18 @@ API Endpoints
 All protected routes require:
 Authorization: Bearer <token>
 
-Method Route Description
-POST /api/auth/register Register new user
-POST /api/auth/login Login and receive JWT token
-GET /api/courses List courses
-POST /api/courses Create course (admin only)
-PUT /api/courses/:id Update course (admin only)
-DELETE /api/courses/:id Delete course (admin only)
-GET /api/qas List Q&A entries
-POST /api/qas Create Q&A (authenticated)
-GET /api/announcements List announcements
-POST /api/announcements Create announcement (admin)
-GET /healthz Health check ({"status":"ok"})
+Method	Route	Description
+POST	/api/auth/register	Register new user
+POST	/api/auth/login	Login and receive JWT token
+GET	/api/courses	List courses
+POST	/api/courses	Create course (admin only)
+PUT	/api/courses/:id	Update course (admin only)
+DELETE	/api/courses/:id	Delete course (admin only)
+GET	/api/qas	List Q&A entries
+POST	/api/qas	Create Q&A (authenticated)
+GET	/api/announcements	List announcements
+POST	/api/announcements	Create announcement (admin)
+GET	/healthz	Health check ({"status":"ok"})
 
 Deployment
 Frontend (Render Static Site)

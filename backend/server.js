@@ -26,11 +26,12 @@ if (process.env.NODE_ENV === 'development') {
 // CORS yapılandırması
 const fallbackOrigins = [
   'http://localhost:5173',
-  'https://student-platform-frontend.onrender.com',
+  'https://student-platform-frontend.onrender.com'
 ];
-const allowedOrigins = process.env.CORS_ORIGIN
+const allowedOrigins = (process.env.CORS_ORIGIN
   ? process.env.CORS_ORIGIN.split(',')
-  : fallbackOrigins;
+  : fallbackOrigins
+);
 
 const corsOptions = {
   origin: (origin, callback) => {

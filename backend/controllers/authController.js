@@ -16,12 +16,7 @@ exports.register = asyncHandler(async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     res.status(422);
-    throw new Error(
-      errors
-        .array()
-        .map((e) => e.msg)
-        .join(', ')
-    );
+    throw new Error(errors.array().map(e => e.msg).join(', '));
   }
 
   // 2) body'den sadece username/email/password al
@@ -76,12 +71,7 @@ exports.login = asyncHandler(async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     res.status(422);
-    throw new Error(
-      errors
-        .array()
-        .map((e) => e.msg)
-        .join(', ')
-    );
+    throw new Error(errors.array().map(e => e.msg).join(', '));
   }
 
   // 2) body'den email/password al
