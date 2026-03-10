@@ -7,15 +7,19 @@ export const fetchCourses = (params = {}) =>
 
 // 🆕 Yeni kurs oluştur (multipart/form-data ile)
 export const createCourse = (payload) =>
-  api.post('/courses', payload, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  }).then(({ data }) => data.course || data);
+  api
+    .post('/courses', payload, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
+    .then(({ data }) => data.course || data);
 
 // ✏️ Mevcut kursu güncelle (multipart/form-data ile)
 export const updateCourse = (id, payload) =>
-  api.put(`/courses/${id}`, payload, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  }).then(({ data }) => data.course || data);
+  api
+    .put(`/courses/${id}`, payload, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
+    .then(({ data }) => data.course || data);
 
 // 🗑️ Kursu sil
 export const removeCourse = (id) =>
