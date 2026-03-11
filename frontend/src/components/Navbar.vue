@@ -21,28 +21,22 @@
       <router-link to="/" @click="closeMenu">Anasayfa</router-link>
       <router-link to="/courses" @click="closeMenu">Dersler</router-link>
       <router-link to="/qas" @click="closeMenu">Soru-Cevap</router-link>
-      <router-link to="/announcements" @click="closeMenu"
-        >Duyurular</router-link
-      >
+      <router-link to="/announcements" @click="closeMenu">Duyurular</router-link>
 
       <router-link
         v-if="!authStore.isAuthenticated"
         to="/login"
         @click="closeMenu"
-        >🔐 Giriş Yap</router-link
-      >
+        >🔐 Giriş Yap</router-link>
       <router-link
         v-if="!authStore.isAuthenticated"
         to="/register"
         @click="closeMenu"
-        >📝 Kayıt Ol</router-link
-      >
+        >📝 Kayıt Ol</router-link>
 
       <template v-if="authStore.isAuthenticated">
         <span class="user-info">👤 {{ authStore.user.username }}</span>
-        <span v-if="authStore.user.role === 'admin'" class="admin-label"
-          >(Admin)</span
-        >
+        <span v-if="authStore.user.role === 'admin'" class="admin-label">(Admin)</span>
         <button class="mobile-logout-btn" @click="handleLogout">Çıkış</button>
       </template>
     </div>
@@ -65,25 +59,22 @@
         class="nav-icon"
         title="Giriş Yap"
         aria-label="Giriş Yap"
-        >🔐</router-link
-      >
+        >🔐</router-link>
       <router-link
         v-if="!authStore.isAuthenticated"
         to="/register"
         class="nav-icon"
         title="Kayıt Ol"
         aria-label="Kayıt Ol"
-        >📝</router-link
-      >
-      <template v-if="authStore.isAuthenticated">
-        <span class="user-info">
-          <span class="emoji">👤</span> {{ authStore.user.username }}
-        </span>
-        <span v-if="authStore.user.role === 'admin'" class="admin-label"
-          >(Admin)</span
-        >
-        <button @click="handleLogout">Çıkış</button>
-      </template>
+        >📝</router-link>
+        <template v-if="authStore.isAuthenticated">
+  <span class="user-info">
+    <span class="emoji">👤</span> {{ authStore.user.username }}
+  </span>
+  <span v-if="authStore.user.role === 'admin'" class="admin-label">(Admin)</span>
+  <button @click="handleLogout">Çıkış</button>
+</template>
+
     </div>
 
     <div class="overlay" v-if="menuOpen" @click="closeMenu"></div>

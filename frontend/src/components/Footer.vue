@@ -34,9 +34,7 @@
         </a>
       </div>
       <div class="footer-box">
-        <p class="footer-rights">
-          © 2025 CengRehber Proje Ekibi. Tüm hakları saklıdır.
-        </p>
+        <p class="footer-rights">© 2025 CengRehber Proje Ekibi. Tüm hakları saklıdır.</p>
       </div>
     </div>
   </footer>

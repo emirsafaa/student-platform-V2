@@ -7,17 +7,17 @@ const answerSchema = new mongoose.Schema({
   text: {
     type: String,
     required: [true, 'Cevap metni gerekli'],
-    trim: true,
+    trim: true
   },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: [true, 'Cevap ekleyen kullanıcı gerekli'],
+    required: [true, 'Cevap ekleyen kullanıcı gerekli']
   },
   createdAt: {
     type: Date,
-    default: Date.now,
-  },
+    default: Date.now
+  }
 });
 
 const QASchema = new mongoose.Schema(
@@ -30,7 +30,7 @@ const QASchema = new mongoose.Schema(
     // Tekil 'answer' alanı yerine cevap dizisi
     answers: {
       type: [answerSchema],
-      default: [],
+      default: []
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
