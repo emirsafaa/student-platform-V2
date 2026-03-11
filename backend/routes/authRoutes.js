@@ -10,7 +10,8 @@ const authLimiter = rateLimit({
   max: 5, // Limit each IP to 5 requests per windowMs
   message: {
     success: false,
-    message: 'Çok fazla deneme yaptınız. Lütfen 15 dakika sonra tekrar deneyin.',
+    message:
+      'Çok fazla deneme yaptınız. Lütfen 15 dakika sonra tekrar deneyin.',
   },
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
