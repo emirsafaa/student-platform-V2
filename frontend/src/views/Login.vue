@@ -16,13 +16,23 @@
         </div>
         <div class="form-group">
           <label for="password">Şifre</label>
-          <input
-            id="password"
-            v-model="password"
-            type="password"
-            required
-            placeholder="••••••••"
-          />
+          <div class="password-input-wrapper">
+            <input
+              id="password"
+              v-model="password"
+              :type="showPassword ? 'text' : 'password'"
+              required
+              placeholder="••••••••"
+            />
+            <button
+              type="button"
+              class="toggle-password-btn"
+              @click="showPassword = !showPassword"
+              :aria-label="showPassword ? 'Şifreyi Gizle' : 'Şifreyi Göster'"
+            >
+              <i :class="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
         <button class="auth-button" :disabled="loading">
           {{ loading ? 'Bekleyin...' : 'Giriş Yap' }}
@@ -50,6 +60,7 @@ const email = ref('');
 const password = ref('');
 const loading = ref(false);
 const error = ref('');
+const showPassword = ref(false);
 
 const handleLogin = async () => {
   loading.value = true;
@@ -113,6 +124,40 @@ const handleLogin = async () => {
   border: 1px solid #cccccc;
   border-radius: 4px;
   font-size: 1rem;
+}
+
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper input {
+  padding-right: 2.5rem;
+}
+
+.toggle-password-btn {
+  position: absolute;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  color: #888888;
+  cursor: pointer;
+  padding: 0.25rem;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.toggle-password-btn:hover {
+  color: #333333;
+}
+
+.toggle-password-btn:focus-visible {
+  outline: 2px solid #4f46e5;
+  border-radius: 4px;
 }
 
 .auth-button {
