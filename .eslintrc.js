@@ -15,9 +15,10 @@ module.exports = {
   },
   rules: {
     // Custom rules (modify as needed)
+    'vue/multi-word-component-names': 'off',
     'no-unused-vars': ['warn'],
     'no-console': ['warn'],
-    'vue/html-indent': ['error', 2],
+    'vue/html-indent': 'off',
     'prettier/prettier': [
       'error',
       {

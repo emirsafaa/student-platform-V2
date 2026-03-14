@@ -15,13 +15,13 @@ exports.createCourse = asyncHandler(async (req, res) => {
 
   // Çoklu dosyalar kontrolü
   const images = Array.isArray(req.files?.images)
-    ? req.files.images.map(file => `/uploads/images/${file.filename}`)
+    ? req.files.images.map((file) => `/uploads/images/${file.filename}`)
     : req.files?.images
       ? [`/uploads/images/${req.files.images.filename}`]
       : [];
 
   const pdfs = Array.isArray(req.files?.pdfs)
-    ? req.files.pdfs.map(file => `/uploads/pdfs/${file.filename}`)
+    ? req.files.pdfs.map((file) => `/uploads/pdfs/${file.filename}`)
     : req.files?.pdfs
       ? [`/uploads/pdfs/${req.files.pdfs.filename}`]
       : [];
@@ -66,7 +66,9 @@ exports.updateCourse = asyncHandler(async (req, res) => {
   );
 
   if (!updated)
-    return res.status(404).json({ success: false, message: 'Ders bulunamadı.' });
+    return res
+      .status(404)
+      .json({ success: false, message: 'Ders bulunamadı.' });
 
   res.status(200).json({ success: true, course: updated });
 });
@@ -76,7 +78,9 @@ exports.deleteCourse = asyncHandler(async (req, res) => {
   const course = await Course.findById(req.params.id);
 
   if (!course)
-    return res.status(404).json({ success: false, message: 'Ders bulunamadı.' });
+    return res
+      .status(404)
+      .json({ success: false, message: 'Ders bulunamadı.' });
 
   await Course.findByIdAndUpdate(req.params.id, { isDeleted: true });
 

@@ -7,7 +7,7 @@
     "frontend": "cd frontend && npm run dev",
     "backend": "cd backend && npm run dev",
     "dev": "echo \"Please run npm run frontend or npm run backend separately\"",
-    "lint": "eslint \"**/*.{js,vue}\" --quiet",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint \"**/*.{js,vue}\" --quiet",
     "format": "prettier --write \"**/*.{js,vue,json,md}\""
   },
   "repository": {
@@ -21,12 +21,12 @@
     "url": "https://github.com/Emirsafa34/student-platform/issues"
   },
   "homepage": "https://github.com/Emirsafa34/student-platform#readme",
-  "dependencies": {},
   "devDependencies": {
-    "eslint": "^9.25.1",
-    "eslint-config-prettier": "^10.1.2",
-    "eslint-plugin-prettier": "^5.2.6",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.2",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-vue": "^9.33.0",
     "nodemon": "^3.1.10",
-    "prettier": "^3.5.3"
+    "prettier": "^3.8.1"
   }
 }
