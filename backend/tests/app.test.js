@@ -1,6 +1,7 @@
+/* global describe, it, expect, afterAll */
 // backend/tests/app.test.js
 const request = require('supertest');
-const app     = require('../server');
+const app = require('../server');
 const mongoose = require('mongoose');
 
 describe('GET /', () => {

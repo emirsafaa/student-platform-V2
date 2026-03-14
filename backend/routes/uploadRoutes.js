@@ -8,6 +8,7 @@ router.post('/upload', uploadFile);
 
 module.exports = router;
 
+/* global app, path */
 // server.js (güncelleme)
 const uploadRoutes = require('./routes/uploadRoutes');
 app.use('/api/files', uploadRoutes);

@@ -31,6 +31,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-backend-
 
+      - name: Install Root Dependencies
+        run: npm install
+
       - name: Install Backend Dependencies
         working-directory: backend
         run: npm ci
@@ -67,6 +70,9 @@ jobs:
           key: ${{ runner.os }}-frontend-${{ hashFiles('frontend/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-frontend-
+
+      - name: Install Root Dependencies
+        run: npm install
 
       - name: Install Frontend Dependencies
         working-directory: frontend
