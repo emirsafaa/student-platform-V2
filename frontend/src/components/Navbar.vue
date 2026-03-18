@@ -7,7 +7,7 @@
       </router-link>
     </div>
 
-    <button class="hamburger" @click="toggleMenu">☰</button>
+    <button class="hamburger" @click="toggleMenu" aria-label="Menüyü Aç/Kapat" title="Menüyü Aç/Kapat">☰</button>
 
     <!-- SLIDE Menü (Mobil) -->
     <div class="mobile-menu" :class="{ open: menuOpen }">
@@ -50,12 +50,14 @@
         v-if="!authStore.isAuthenticated"
         to="/login"
         class="nav-icon"
+        aria-label="Giriş Yap"
         title="Giriş Yap"
         >🔐</router-link>
       <router-link
         v-if="!authStore.isAuthenticated"
         to="/register"
         class="nav-icon"
+        aria-label="Kayıt Ol"
         title="Kayıt Ol"
         >📝</router-link>
         <template v-if="authStore.isAuthenticated">
