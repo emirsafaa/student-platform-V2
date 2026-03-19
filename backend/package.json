@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles",
+    "lint": "echo 'No lint script specified'"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
