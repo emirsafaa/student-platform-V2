@@ -7,7 +7,7 @@
       </router-link>
     </div>
 
-    <button class="hamburger" @click="toggleMenu">☰</button>
+    <button class="hamburger" @click="toggleMenu" aria-label="Menüyü Aç/Kapat" title="Menüyü Aç/Kapat">☰</button>
 
     <!-- SLIDE Menü (Mobil) -->
     <div class="mobile-menu" :class="{ open: menuOpen }">
