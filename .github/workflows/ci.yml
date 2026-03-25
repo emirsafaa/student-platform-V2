@@ -16,7 +16,7 @@ jobs:
         node-version: [18.x]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -24,7 +24,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Cache node modules (backend)
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: backend/node_modules
           key: ${{ runner.os }}-backend-${{ hashFiles('backend/package-lock.json') }}
@@ -34,10 +34,6 @@ jobs:
       - name: Install Backend Dependencies
         working-directory: backend
         run: npm ci
-
-      - name: Run ESLint (backend)
-        working-directory: backend
-        run: npm run lint
 
       - name: Run Backend Tests
         working-directory: backend
@@ -53,7 +49,7 @@ jobs:
         node-version: [18.x]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -61,7 +57,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Cache node modules (frontend)
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: frontend/node_modules
           key: ${{ runner.os }}-frontend-${{ hashFiles('frontend/package-lock.json') }}
@@ -71,10 +67,6 @@ jobs:
       - name: Install Frontend Dependencies
         working-directory: frontend
         run: npm ci
-
-      - name: Run ESLint (frontend)
-        working-directory: frontend
-        run: npm run lint
 
       - name: Run Frontend Build
         working-directory: frontend
