@@ -39,6 +39,5 @@ body {
 .main-content {
   flex: 1;
   padding: 1rem;
-  margin-top: var(--navbar-height);
 }
 </style>

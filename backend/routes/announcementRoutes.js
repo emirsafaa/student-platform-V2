@@ -8,8 +8,7 @@ const {
   updateAnnouncement,
   deleteAnnouncement,
 } = require('../controllers/announcementController');
-const { protect } = require('../middleware/authMiddleware');
-const { adminOnly } = require('../middleware/roleMiddleware');
+const { protect, adminOnly } = require('../middleware/authMiddleware');
 
 router.get('/', getAnnouncements);
 router.post('/', protect, adminOnly, createAnnouncement);

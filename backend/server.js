@@ -92,7 +92,7 @@ if (require.main === module) {
   }
 
   mongoose
-    .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(uri)
     .then(() => {
       console.log('✅ MongoDB bağlantısı başarılı');
       const PORT = process.env.PORT || 5000;

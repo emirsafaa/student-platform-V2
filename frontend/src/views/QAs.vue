@@ -114,7 +114,6 @@
 import { ref, reactive, computed, onMounted } from 'vue';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
-import { useRouter } from 'vue-router';
 import {
   fetchQAs,
   addQuestion,
@@ -122,12 +121,11 @@ import {
   deleteQuestion as removeQA,
   deleteAnswer as removeAnswer,
 } from '@/services/qaService';
+import { useAuthStore } from '@/stores/auth';
 
-const router = useRouter();
-const token = localStorage.getItem('token');
-const role = localStorage.getItem('role');
-const isLoggedIn = computed(() => !!token);
-const isAdmin = computed(() => role === 'admin');
+const authStore = useAuthStore();
+const isLoggedIn = computed(() => authStore.isAuthenticated);
+const isAdmin = computed(() => authStore.isAdmin);
 
 const qas = ref([]);
 const newQuestion = ref('');

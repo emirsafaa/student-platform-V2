@@ -17,6 +17,9 @@
     --font-logo:       'Poppins', sans-serif;    /* ✅ EKLENDİ */
 
   
+    /* ——— Layout ——— */
+    --navbar-height:   64px;
+
     /* ——— Geçiş Süreleri ——— */
     --transition-fast: 0.2s;
     --transition:      0.3s ease-in-out;

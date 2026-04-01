@@ -28,8 +28,8 @@
         >📝 Kayıt Ol</router-link>
 
       <template v-if="authStore.isAuthenticated">
-        <span class="user-info">👤 {{ authStore.user.username }}</span>
-        <span v-if="authStore.user.role === 'admin'" class="admin-label">(Admin)</span>
+        <span class="user-info">👤 {{ authStore.user?.username }}</span>
+        <span v-if="authStore.user?.role === 'admin'" class="admin-label">(Admin)</span>
         <button class="mobile-logout-btn" @click="handleLogout">Çıkış</button>
       </template>
     </div>
@@ -60,9 +60,9 @@
         >📝</router-link>
         <template v-if="authStore.isAuthenticated">
   <span class="user-info">
-    <span class="emoji">👤</span> {{ authStore.user.username }}
+    <span class="emoji">👤</span> {{ authStore.user?.username }}
   </span>
-  <span v-if="authStore.user.role === 'admin'" class="admin-label">(Admin)</span>
+  <span v-if="authStore.user?.role === 'admin'" class="admin-label">(Admin)</span>
   <button @click="handleLogout">Çıkış</button>
 </template>
 
@@ -106,8 +106,11 @@ watchEffect(() => {
   align-items: center;
   background-color: var(--color-primary);
   padding: 0.75rem 1.5rem;
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1000;
+  height: var(--navbar-height);
+  box-sizing: border-box;
 }
 
 .navbar-logo-link {

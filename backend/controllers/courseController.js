@@ -50,7 +50,8 @@ exports.getCourses = asyncHandler(async (req, res) => {
   const query = { isDeleted: false };
 
   if (search && typeof search === 'string') {
-    query.title = { $regex: search, $options: 'i' }; // case-insensitive
+    const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    query.title = { $regex: escaped, $options: 'i' };
   }
 
   const courses = await Course.find(query);
@@ -59,10 +60,18 @@ exports.getCourses = asyncHandler(async (req, res) => {
 
 // Update course (admin only)
 exports.updateCourse = asyncHandler(async (req, res) => {
+  const allowedFields = ['title', 'description', 'grade', 'term', 'year', 'youtubeEmbed', 'youtubePlaylist', 'gradingPolicy'];
+  const updates = {};
+  for (const key of allowedFields) {
+    if (req.body[key] !== undefined) {
+      updates[key] = req.body[key];
+    }
+  }
+
   const updated = await Course.findByIdAndUpdate(
     req.params.id,
-    { ...req.body },
-    { new: true }
+    updates,
+    { new: true, runValidators: true }
   );
 
   if (!updated)

@@ -77,8 +77,8 @@ exports.login = asyncHandler(async (req, res) => {
   // 2) body'den email/password al
   const { email, password } = req.body;
 
-  // 3) kullanıcıyı bul
-  const user = await User.findOne({ email });
+  // 3) kullanıcıyı bul (silinmiş kullanıcıları hariç tut)
+  const user = await User.findOne({ email, isDeleted: false });
   if (!user) {
     res.status(401);
     throw new Error('Geçersiz kimlik bilgisi.');

@@ -6,7 +6,7 @@ const User = require('../models/User');
 
 // Get all users (admin only)
 exports.getAllUsers = asyncHandler(async (req, res) => {
-  const users = await User.find().select('-password');
+  const users = await User.find({ isDeleted: false }).select('-password');
   res.json({ success: true, users });
 });
 
@@ -61,7 +61,8 @@ exports.deleteUser = asyncHandler(async (req, res) => {
       .status(404)
       .json({ success: false, message: 'Kullanıcı bulunamadı.' });
   }
-  await User.findByIdAndDelete(req.params.id);
+  user.isDeleted = true;
+  await user.save();
   res.json({ success: true, message: 'Kullanıcı başarıyla silindi.' });
 });
 

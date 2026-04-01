@@ -85,7 +85,6 @@ import { fetchAnnouncements } from '@/services/announcementService';
 const LATEST_ITEMS_COUNT = 3; // Constant for latest items display
 
 const router = useRouter();
-const user = { role: localStorage.getItem('role') };
 
 const isLoading = ref(true);
 const latestAnnouncements = ref([]);

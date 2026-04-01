@@ -15,7 +15,9 @@ exports.createQA = asyncHandler(async (req, res) => {
 
 // Get all QAs
 exports.getAllQA = asyncHandler(async (req, res) => {
-  const list = await QA.find({ isDeleted: false });
+  const list = await QA.find({ isDeleted: false })
+    .populate('createdBy', 'username')
+    .populate('answers.createdBy', 'username');
   res.status(200).json({ success: true, qas: list });
 });
 
@@ -29,6 +31,8 @@ exports.addAnswer = asyncHandler(async (req, res) => {
   }
   qa.answers.push({ text, createdBy: req.user._id });
   await qa.save();
+  await qa.populate('createdBy', 'username');
+  await qa.populate('answers.createdBy', 'username');
   res.status(200).json({ success: true, qa });
 });
 
