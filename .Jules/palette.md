@@ -1,0 +1,3 @@
+## 2026-03-23 - Accessibility of Emoji/Symbol Icon Buttons
+**Learning:** The application heavily relies on emojis and text symbols (like ☰, 🔐, ✎, 🗑) as icon-only interactive elements (buttons and links) without accompanying text labels. This presents a critical accessibility barrier for screen reader users and can be confusing for sighted users who may not immediately grasp the symbol's meaning without a tooltip.
+**Action:** Consistently add `aria-label` for screen readers and `title` attributes for native browser tooltips to all icon-only interactive elements to ensure both accessibility and usability.
