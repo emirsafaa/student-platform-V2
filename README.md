@@ -127,10 +127,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
 Contact
 Emir Safa Çalışkan – esafac34@gmail.com
 Project Link: https://github.com/Emirsafa34/student-platform
-
-
-
-
-
-
-
