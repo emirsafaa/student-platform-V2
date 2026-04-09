@@ -1,0 +1,3 @@
+## 2024-05-15 - Missing Accessible Names on Emoji Buttons
+**Learning:** This app frequently uses text emojis (like '✏️', '🗑️', '☰', '🔐', '📝') as icon-only buttons or links. By default, these elements lack proper `aria-label` and `title` attributes, making them inaccessible to screen readers and lacking tooltips for sighted users.
+**Action:** When working on this app, always ensure that any new or existing emoji-only buttons/links are updated to include descriptive `aria-label` attributes for screen readers and `title` attributes for visual tooltips. Use `aria-expanded` where applicable for toggle buttons.
