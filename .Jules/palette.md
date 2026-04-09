@@ -1,0 +1,3 @@
+## 2026-03-12 - Password Visibility Toggle Accessibility
+**Learning:** Icon-only buttons used for toggling states (like password visibility) require dynamic ARIA labels that describe their current action based on the state (e.g., 'Şifreyi Gizle' vs 'Şifreyi Göster') to be accessible to screen reader users. Simply using a static `aria-label` or relying on visual icons is insufficient. Additionally, these buttons must have proper focus states for keyboard navigation.
+**Action:** Always ensure dynamic ARIA labels correspond accurately to the *next* action the toggle button will perform, and verify `focus-visible` styles are appropriately set for keyboard users.
