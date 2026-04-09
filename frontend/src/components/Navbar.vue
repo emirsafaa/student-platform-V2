@@ -7,10 +7,17 @@
       </router-link>
     </div>
 
-    <button class="hamburger" @click="toggleMenu">☰</button>
+    <button
+      class="hamburger"
+      @click="toggleMenu"
+      aria-label="Menüyü Aç/Kapat"
+      title="Menü"
+      :aria-expanded="menuOpen.toString()"
+      aria-controls="mobile-menu"
+    >☰</button>
 
     <!-- SLIDE Menü (Mobil) -->
-    <div class="mobile-menu" :class="{ open: menuOpen }">
+    <div id="mobile-menu" class="mobile-menu" :class="{ open: menuOpen }">
       <router-link to="/" @click="closeMenu">Anasayfa</router-link>
       <router-link to="/courses" @click="closeMenu">Dersler</router-link>
       <router-link to="/qas" @click="closeMenu">Soru-Cevap</router-link>
@@ -51,12 +58,14 @@
         to="/login"
         class="nav-icon"
         title="Giriş Yap"
+        aria-label="Giriş Yap"
         >🔐</router-link>
       <router-link
         v-if="!authStore.isAuthenticated"
         to="/register"
         class="nav-icon"
         title="Kayıt Ol"
+        aria-label="Kayıt Ol"
         >📝</router-link>
         <template v-if="authStore.isAuthenticated">
   <span class="user-info">
