@@ -110,8 +110,8 @@
             <div v-for="c in filteredCoursesByGradeAndTerm(grade, 'güz')" :key="c._id" class="course-card">
               <button @click="selectCourse(c)">{{ c.title }}</button>
               <span v-if="isAdmin" class="list-actions">
-                <button @click.stop="enterEditMode(c)">✎</button>
-                <button @click.stop="deleteCourse(c._id)">🗑</button>
+                <button @click.stop="enterEditMode(c)" aria-label="Dersi düzenle" title="Dersi düzenle">✎</button>
+                <button @click.stop="deleteCourse(c._id)" aria-label="Dersi sil" title="Dersi sil">🗑</button>
               </span>
             </div>
           </div>
@@ -124,8 +124,8 @@
             <div v-for="c in filteredCoursesByGradeAndTerm(grade, 'bahar')" :key="c._id" class="course-card">
               <button @click="selectCourse(c)">{{ c.title }}</button>
               <span v-if="isAdmin" class="list-actions">
-                <button @click.stop="enterEditMode(c)">✎</button>
-                <button @click.stop="deleteCourse(c._id)">🗑</button>
+                <button @click.stop="enterEditMode(c)" aria-label="Dersi düzenle" title="Dersi düzenle">✎</button>
+                <button @click.stop="deleteCourse(c._id)" aria-label="Dersi sil" title="Dersi sil">🗑</button>
               </span>
             </div>
           </div>
